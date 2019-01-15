@@ -60,9 +60,8 @@ class RocketsViewModel(
      */
     private fun compose(): Observable<RocketsViewState> {
         return intentSubject
-            .compose(intentFilter)
             .map(this::actionFromIntent)
-            .compose(actionProcessorHolder.actionProcessor)
+            .compose(actionProcessorHolder.loadTasksProcessor)
             // Cache each state and pass it to the reducer to create a new state from
             // the previous cached one and the latest Result emitted from the action processor.
             // The Scan operator is used here for the caching.

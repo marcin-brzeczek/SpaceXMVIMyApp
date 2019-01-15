@@ -3,6 +3,7 @@ package mbitsystem.com.spacexmvimyapp.data.source
 import io.reactivex.Observable
 import io.reactivex.Single
 import mbitsystem.com.spacexmvimyapp.data.model.Rocket
+import java.util.concurrent.TimeUnit
 
 class RocketsRepository {
 
@@ -15,6 +16,6 @@ class RocketsRepository {
     Rocket("Falcon Heavy", "https://i.wpimg.pl/O/593x450/d.wpimg.pl/525385494--961962968/spacex.png"),
     Rocket("BFR", "https://upload.wikimedia.org/wikipedia/en/9/90/SpaceX_BFR_launch_vehicle.jpg"))
 
-fun getAllRockets(): Single<List<Rocket>> =  Observable.fromIterable(rockets).toList()
+fun getAllRockets(): Single<List<Rocket>> =  Observable.fromIterable(rockets).toList().delay(2000,TimeUnit.MILLISECONDS)
 }
 
